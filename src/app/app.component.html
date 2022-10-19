@@ -1,28 +1,35 @@
 
 <div cdkDropListGroup>
   <div class="example-container" *ngFor="let list of lists; index as i">
-    <h2>{{i}}</h2>
     <div class="style-container">
-      <mat-button-toggle-group name="list.id">
-        <mat-button-toggle value="left" aria-label="Text align left" >
+      <mat-button-toggle-group #group="matButtonToggleGroup">
+        <mat-button-toggle value="flex-start" aria-label="Text align left" >
           <mat-icon>format_align_left</mat-icon>
         </mat-button-toggle>
         <mat-button-toggle value="center" aria-label="Text align center">
           <mat-icon>format_align_center</mat-icon>
         </mat-button-toggle>
-        <mat-button-toggle value="right" aria-label="Text align right"> 
+        <mat-button-toggle value="flex-end" aria-label="Text align right"> 
           <mat-icon>format_align_right</mat-icon>
         </mat-button-toggle>
       </mat-button-toggle-group>
     </div>
-
+    <h3>Style: {{group.value}}</h3>
     <div
       cdkDropList
       [cdkDropListData]="list.array"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
-      style.justify-content="list.id.value"> 
-      <div class="example-box" *ngFor="let item of list.array" cdkDrag>{{item}}</div>
+      style.justify-content="{{group.value}}"> 
+      <div class="example-box" *ngFor="let item of list.array" cdkDrag>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>{{item.title}}</mat-card-title>
+            <mat-card-subtitle>  {{item.price}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="{{item.photo}}">
+        </mat-card>
+      </div>
     </div>
   </div>
 
