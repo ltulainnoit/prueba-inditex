@@ -20,6 +20,7 @@
       [cdkDropListData]="list.array"
       class="example-list"
       (cdkDropListDropped)="drop($event)"
+      [cdkDropListEnterPredicate]="evenPredicate"
       style.justify-content="{{group.value}}"> 
       <div class="example-box" *ngFor="let item of list.array" cdkDrag>
         <mat-card class="example-card">

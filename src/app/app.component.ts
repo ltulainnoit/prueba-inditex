@@ -1,6 +1,6 @@
 import { Component,  ElementRef, ViewChild} from '@angular/core';
 import { FormControl } from '@angular/forms';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -42,15 +42,19 @@ export class AppComponent {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      if(event.container.data.length < 3){
+      // if(event.container.data.length < 3){
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex,
       );
-    }
+    // } else {console.log("limit")}
   }
+  }
+
+  evenPredicate(drag: CdkDrag, drop: CdkDropList) {
+    return drop.data.length < 3;
   }
 }
 
