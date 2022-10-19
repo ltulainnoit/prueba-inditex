@@ -1,31 +1,32 @@
-<!-- <product-row></product-row> -->
 
-<div class="example-container">
-  <h2>To do</h2>
+<div cdkDropListGroup>
+  <div class="example-container" *ngFor="let list of lists; index as i">
+    <h2>{{i}}</h2>
+    <div class="style-container">
+      <mat-button-toggle-group name="list.id">
+        <mat-button-toggle value="left" aria-label="Text align left" >
+          <mat-icon>format_align_left</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle value="center" aria-label="Text align center">
+          <mat-icon>format_align_center</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle value="right" aria-label="Text align right"> 
+          <mat-icon>format_align_right</mat-icon>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
 
-  <div
-    cdkDropList
-    #todoList="cdkDropList"
-    [cdkDropListData]="list[0]"
-    [cdkDropListConnectedTo]="[doneList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of list[0]" cdkDrag>{{item}}</div>
+    <div
+      cdkDropList
+      [cdkDropListData]="list.array"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+      style.justify-content="list.id.value"> 
+      <div class="example-box" *ngFor="let item of list.array" cdkDrag>{{item}}</div>
+    </div>
   </div>
-</div>
 
-<div class="example-container">
-  <h2>Done</h2>
 
-  <div
-    cdkDropList
-    #doneList="cdkDropList"
-    [cdkDropListData]="list[1]"
-    [cdkDropListConnectedTo]="[todoList]"
-    class="example-list"
-    (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of list[1]" cdkDrag>{{item}}</div>
-  </div>
 </div>
 
 <router-outlet></router-outlet>

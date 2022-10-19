@@ -10,8 +10,13 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class AppComponent {
   title = 'prueba-inditex';
+  fontStyleControl = new FormControl('');
   
-  list = [['Get to work', 'Pick up groceries', 'Go home'], ['Get up', 'Brush teeth']];
+  lists = [
+  {id: 0,
+    array:['Get to work', 'Pick up groceries', 'Go home']}, 
+  {id: 1,
+    array: ['Get up', 'Brush teeth']}];
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
