@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductRowComponent } from './product-row/product-row.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule,
     ReactiveFormsModule,
     DragDropModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
